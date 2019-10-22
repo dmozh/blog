@@ -7,6 +7,9 @@
 </script>
 
 <script>
+
+    let width;
+
 	export let posts;
 	let theme = 'None'
 </script>
@@ -19,6 +22,10 @@
     .cust-img-cont{
         align-items: center;
         display: flex;
+    }
+
+    .date{
+        font-size: 10pt;
     }
 	@media (max-width: 480px) {
         h1 {
@@ -38,6 +45,14 @@
             width: 100px;
             height: 100px;
         }
+        .date{
+            font-size: 8pt;
+        }
+    }
+
+    .cu{
+        display: flex;
+        justify-content: space-between;
     }
 </style>
 
@@ -46,7 +61,7 @@
 </svelte:head>
 
 
-
+<svelte:window bind:innerWidth="{width}"/>
 <div class="container">
     <h1>Научная деятельность</h1>
     <h2>Тема работы: {theme}</h2>
@@ -63,9 +78,15 @@
             <div class="card-content">
               <h4>{post.title}</h4>
               <!--<p>{post.description}</p>-->
+              {#if width<480}
+                <div class="date">{post.date}</div>
+              {:else}
+                <div class="date">Была добавлена {post.date}</div>
+              {/if}
             </div>
-            <div class="card-action">
+            <div class="card-action cu">
               <a  href='blog/{post.slug}'>В полную</a>
+
             </div>
           </div>
           <div class="card-image cust-img-cont">

@@ -33,7 +33,8 @@ export async function get(req, res) {
     const contents = JSON.stringify(posti.map(post => {
         return {
             title: post.title,
-            slug: post.slug
+            slug: post.slug,
+            date: post.date
         };
     }));
 	res.writeHead(200, {

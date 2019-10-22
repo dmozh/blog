@@ -31,14 +31,6 @@ export let confs, courses;
 // });
 let certs = [];
 let name = "Можейко Данила Андреевич";
-let about = "text text text text text text text text text text text text text text text text text text text text text " +
- "text text text text text text text text text text text text text text text text text text text text text text text " +
-  "text text text text text text text text text text text text text text text text text text text text text text text " +
-   "text text text text text text text text text text text text text text text text text text text text text text text " +
-    "text text text text text text text text text text text text text text text text text text text text text text text " +
-     "text text text text text text text text text text text text text text text text text text text text text text text " +
-      "text text text text text text text text text text text text text text text text text text text text text text text" +
-       " text text text text text text text text text text text text text text text text text text ";
 
 // let courses = [
 //     {id: 1, course: "course1", url: "url"},
@@ -94,7 +86,7 @@ let about = "text text text text text text text text text text text text text te
         display: flex;
         /*background: #f0f0f0;*/
         min-width: 320px;
-        height: 400px;
+        height: 420px;
         /*border-radius: 50%;*/
 
         margin-right: 25px;
@@ -205,7 +197,7 @@ let about = "text text text text text text text text text text text text text te
             }
             .img-container, ._img{
                 min-width: 275px;
-                height: 350px;
+                height: 365px;
                 /*width: 250px;*/
                 margin-right: 0;
                 margin-bottom: 15px;
@@ -259,7 +251,7 @@ let about = "text text text text text text text text text text text text text te
         }
         .img-container, ._img{
             min-width: 275px;
-            height: 350px;
+            height: 365px;
             /*width: 250px;*/
             margin-right: 0;
             margin-bottom: 15px;
@@ -317,7 +309,7 @@ let about = "text text text text text text text text text text text text text te
         }
         .img-container, ._img{
             min-width: 275px;
-            height: 350px;
+            height: 365px;
             width: 250px;
             margin-right: 0;
             margin-bottom: 15px;
@@ -389,7 +381,7 @@ let about = "text text text text text text text text text text text text text te
 
         .img-container, ._img{
             max-width: 250px; min-width: 200px;
-            max-height: 300px; min-height: 300px;
+            max-height: 320px; min-height: 320px;
         }
 
         .col{
@@ -486,7 +478,7 @@ let about = "text text text text text text text text text text text text text te
             <ul>
                 <li>
                     <ul>Python3 : ~2 года использования
-                        <li>aihttp</li>
+                        <li>aiohttp</li>
                         <li>Django</li>
                         <li>Flask</li>
                     </ul>
@@ -497,7 +489,7 @@ let about = "text text text text text text text text text text text text text te
                         <li>CSS3</li>
                         <li>JS</li>
                         <li>VueJs</li>
-                        <li>Svelte</li>
+                        <li>Svelte+Sapper</li>
                     </ul>
                 </li>
                 <li>

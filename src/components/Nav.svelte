@@ -1,10 +1,19 @@
 <script>
+    import { onMount } from 'svelte';
     import { createEventDispatcher } from 'svelte';
+    import { fly } from 'svelte/transition';
     const dispatch = createEventDispatcher();
 
+    let width;
+
+    let visible_menu = false;
+
+    function changeVisible() {
+      visible_menu = !visible_menu;
+    }
 
 	export let segment;
-
+    // on:mouseclick = "{visible_menu = !visible_menu}"
 </script>
 
 <style lang="scss">
@@ -106,12 +115,81 @@
         /*background: #d5abe2;*/
         margin-bottom: 5px;
 	}
+
+    .img-container{
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-container:hover{
+        background: rgba(0,0,0,0.1);
+    }
+
+	.img-container>img{
+	    max-width: 35px;
+	    max-height: 35px;
+	}
+
+	.menu{
+	    display: flex;
+	    position: fixed;
+	    top: 56px;
+	    left: 0;
+	    width: 150px;
+	    z-index: 1000;
+	    background: #ee8386;
+	}
+
+	@media (max-width: 450px) {
+	    ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* clearfix */
+        ul::after {
+            content: '';
+            display: flex;
+            clear: both;
+        }
+
+        li {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            float: left;
+        }
+	}
 </style>
 
+
+<svelte:window bind:innerWidth="{width}"/>
+{#if width < 768}
+<nav class="cust visible">
+    <div class="img-container"><img on:click = '{changeVisible}' src="menu_icon.png"></div>
+    {#if visible_menu == true}
+        <div transition:fly="{{ x: -150, duration: 1000 }}" class="menu">
+            <ul>
+                <li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>БЛОГ НИР</a></li>
+                <li><a class='{segment === undefined ? "selected" : ""}' href='.'>НОВОСТИ</a></li>
+                <li><a class='{segment === "about" ? "selected" : ""}' href='about'>ОБ АВТОРЕ</a></li>
+                <!--<li><a class='{segment === "about" ? "selected" : ""}'>УЧЕБНЫЙ<br>МАТЕРИАЛ</a></li>-->
+                <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+                     the blog data when we hover over the link or tap it on a touchscreen -->
+            </ul>
+        </div>
+    {/if}
+</nav>
+{:else}
 <nav class="cust visible">
 	<ul>
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>БЛОГ</a></li>
+		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>БЛОГ НИР</a></li>
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>НОВОСТИ</a></li>
+		<!--<li><a class='{segment === "about" ? "selected" : ""}'>УЧЕБНЫЙ МАТЕРИАЛ</a></li>-->
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 	</ul>
@@ -119,3 +197,4 @@
 	    <li><a class='{segment === "about" ? "selected" : ""}' href='about'>ОБ АВТОРЕ</a></li>
     </ul>
 </nav>
+{/if}
