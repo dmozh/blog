@@ -22,7 +22,7 @@ async function getData() {
     let posts = [];
     flist.forEach(async (doc)=>{
     	await posts.push(doc.data());
-        await console.log(doc.data())
+        // await console.log(doc.data())
     });
     posts.forEach(post => {
         post.html = post.html.replace(/^\t{3}/gm, '');

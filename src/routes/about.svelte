@@ -2,17 +2,27 @@
 import {db} from "../fb.js"
 // import "firebase/firestore"
  	export async function preload(page, session) {
- 		let fblist = await db.collection("conferences").get();
-        let confs = [];
+ 	    let confs = [];
         let courses = [];
+        let certs = [];
+
+        let fblist = await db.collection("conferences").get();
  		fblist.forEach((doc)=>{
  		    confs.push(doc.data())
         });
+
  		fblist = await db.collection("courses").get();
  		fblist.forEach((doc)=>{
             courses.push(doc.data())
         });
- 		return {confs: confs, courses: courses};
+
+ 		fblist = await db.collection("certs").get();
+        fblist.forEach((doc)=>{
+            certs.push(doc.data())
+            console.log(doc.data())
+        });
+
+ 		return {confs: confs, courses: courses, certs: certs};
  	}
 </script>
 
@@ -21,21 +31,14 @@ import {db} from "../fb.js"
 </svelte:head>
 
 <script>
-export let confs, courses;
-// console.log(confs)
-// console.log(courses)
-// db.collection("conferences").get().then(async (querySnapshot) => {
-//    await querySnapshot.forEach( (doc) => {
-//        confs.push(doc.data());
-//   });
-// });
-let certs = [];
+export let confs, courses, certs;
+
 let name = "Можейко Данила Андреевич";
 
-// let courses = [
-//     {id: 1, course: "course1", url: "url"},
-//     {id: 2, course: "course2", url: "url"},
-//     {id: 3, course: "course3", url: "url"},];
+let certss = [
+    {id: 1, title: "course1", url: "url"},
+    {id: 2, title: "course2", url: "url"},
+    {id: 3, title: "course3", url: "url"},];
 </script>
 
 <style lang="scss">
@@ -542,7 +545,7 @@ let name = "Можейко Данила Андреевич";
             <h5 class="post">Пройдены следующие курсы:</h5>
             {#each courses as course}
                 <div class="post">
-                    <p>{course.title}</p>
+                    <div style="font-size: 13pt;">{course.title}: <div class="a pulse"><a href="{course.url}">Мой прогресс</a></div></div>
                 </div>
             {/each}
         {:else}
@@ -565,10 +568,10 @@ let name = "Можейко Данила Андреевич";
     <div class="col certificate-block">
         <div class="title">Сертификаты</div>
         {#if certs.length>0}
-            <h5 class="post">Я посетил следующие конференции:</h5>
-            {#each confs as conf}
+            <h5 class="post">Полученные сертификаты:</h5>
+            {#each certs as cert}
                 <div class="post">
-                   <p>Конференция "{conf.title}" в роли {conf.role}. Дата: {conf.date}</p>
+                   <p>Сертификат по: "{cert.title}" <a href="{cert.url}">Ссылка сертификата</a></p>
                 </div>
             {/each}
         {:else}
