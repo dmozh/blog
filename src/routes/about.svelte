@@ -88,9 +88,9 @@ let certss = [
         position: relative;
         display: flex;
         /*background: #f0f0f0;*/
-        min-width: 320px;
+        min-width: 400px;
         height: 420px;
-        /*border-radius: 50%;*/
+        border-radius: 50%;
 
         margin-right: 25px;
     }
@@ -466,7 +466,7 @@ let certss = [
 <div class="cust-cont">
     <div></div>
     <div class="img-container">
-        <img class="_img" src="ava.png">
+        <img class="_img" src="ava.jpg">
     </div>
     <div class="del"></div>
     <div class="about-container">
