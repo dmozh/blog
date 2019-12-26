@@ -32,6 +32,7 @@ import {db} from "../fb.js"
 
 <script>
 export let confs, courses, certs;
+import { fly } from 'svelte/transition';
 
 let name = "Можейко Данила Андреевич";
 
@@ -63,7 +64,7 @@ let certss = [
         background: rgba(65,65,65,0.05);
         border-radius: 15px;
         padding: 1em;
-        align-items: c;
+        align-items: center;
         justify-content: flex-start;
         margin-bottom: 20px;
         -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
@@ -90,20 +91,21 @@ let certss = [
         /*background: #f0f0f0;*/
         min-width: 400px;
         height: 420px;
+        /*height: 100%;*/
         border-radius: 50%;
 
         margin-right: 25px;
     }
 
     .img-container::after{
-        display: flex;
-        content: '';
+        /*display: flex;*/
+        /*content: '';*/
         /*width: calc(100%);*/
-        background: rgba(0,0,0,0.2);
-        height: calc(100%);
-        width: 2px;
-        right: -9px;
-        position: absolute;
+        /*background: rgba(0,0,0,0.2);*/
+        /*height: calc(100%);*/
+        /*width: 2px;*/
+        /*right: -9px;*/
+        /*position: absolute;*/
         /*bottom: -9px;*/
     }
 
@@ -169,6 +171,15 @@ let certss = [
         height: fit-content;
         width: 100%;
     }
+    .content-container:before{
+        display: flex;
+        content: '';
+        height: calc(100%);
+        background: rgba(0,0,0,0.2);
+        width: 2px;
+        left: -9px;
+        position: absolute;
+    }
 
     .ab-col{
         margin-top: 10px;
@@ -189,6 +200,16 @@ let certss = [
 
     }
     @media (max-width: 1050px) {
+
+            .content-container:before{
+                display: flex;
+                content: '';
+                height: 0;
+                background: rgba(0,0,0,0.2);
+                width: 0;
+                left: 0;
+                position: absolute;
+            }
             .col{
                 margin-bottom: 10px;
                 width: 400px
@@ -312,7 +333,7 @@ let certss = [
         }
         .img-container, ._img{
             min-width: 275px;
-            height: 365px;
+            height: 290px;
             width: 250px;
             margin-right: 0;
             margin-bottom: 15px;
@@ -462,8 +483,10 @@ let certss = [
     }
 </style>
 
-<h1>{name}</h1>
-<div class="cust-cont">
+<h1 in:fly="{{ delay: 500, y: 500, duration: 500 }}"
+    out:fly="{{ delay: 0, y: -500, duration: 500 }}">{name}</h1>
+<div class="cust-cont" in:fly="{{ delay: 500, y: 500, duration: 500 }}"
+                       out:fly="{{ delay: 0, y: -500, duration: 500 }}">
     <div></div>
     <div class="img-container">
         <img class="_img" src="ava.jpg">
@@ -500,10 +523,32 @@ let certss = [
                         <li>JavaFX</li>
                     </ul>
                 </li>
+                <li>
+                    <ul>C# : обучаюсь
+                        <li>WPF</li>
+                        <li>ASP .NET</li>
+                        <li>Unity</li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>SQL
+                        <li>PostgresSQL</li>
+                        <li>MSSQL</li>
+                    </ul>
+                </li>
             </ul>
             </div>
             <div class="ab-col">Увлечения:
                 <ul>
+                    <li>
+                        Data science and ML
+                    </li>
+                    <li>
+                        Backend and frontend webdev
+                    </li>
+                    <li>
+                        &nbsp;
+                    </li>
                     <li>
                         Музыка
                     </li>
@@ -517,7 +562,10 @@ let certss = [
                         Игры
                     </li>
                     <li>
-                        Кодинг и автоматизация бытовых процессов
+                        &nbsp;
+                    </li>
+                    <li>
+                        Кодинг и автоматизация бытовых и рабочих процессов
                     </li>
                 </ul>
             </div>
@@ -538,7 +586,8 @@ let certss = [
 
 
 
-<div class="cust-cont foot">
+<div class="cust-cont foot" in:fly="{{ delay: 500, y: 500, duration: 500 }}"
+                            out:fly="{{ delay: 0, y: -500, duration: 500 }}">
     <div class="col">
         <div class="title">Пройденные курсы</div>
         {#if courses.length>0}

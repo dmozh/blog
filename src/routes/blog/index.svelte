@@ -7,7 +7,7 @@
 </script>
 
 <script>
-
+    import { fly } from 'svelte/transition';
     let width;
 
 	export let posts;
@@ -15,6 +15,10 @@
 </script>
 
 <style>
+
+    .container{
+        height: 100vh;
+    }
 
 	.card{
 	}
@@ -62,7 +66,8 @@
 
 
 <svelte:window bind:innerWidth="{width}"/>
-<div class="container">
+<div class="container" in:fly="{{ delay: 500, y: 500, duration: 500 }}"
+                       out:fly="{{ delay: 0, y: -500, duration: 500 }}">
     <h1>Научная деятельность</h1>
     <h2>Тема работы: {theme}</h2>
     <h3>Ход работы:</h3>

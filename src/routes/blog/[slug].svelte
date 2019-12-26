@@ -14,6 +14,7 @@
 </script>
 
 <script>
+    import { fly } from 'svelte/transition';
 	export let post;
 </script>
 
@@ -58,7 +59,8 @@
 </svelte:head>
 
 
-<div class="container">
+<div class="container" in:fly="{{ delay: 1000, x: -500, duration: 500 }}"
+                       out:fly="{{ delay: 0, x: 500, duration: 500 }}">
 
     <h1>{post.title}</h1>
 

@@ -4,7 +4,7 @@
 
 <script>
     import NewsCard from '../components/NewsCard.svelte'
-
+    import { fly } from 'svelte/transition';
 
     let history = [{
         id: 1,
@@ -40,7 +40,8 @@
 	}
 </style>
 
-<div class="container">
+<div class="container"  in:fly="{{ delay: 1000, x: -500, duration: 500 }}"
+                        out:fly="{{ delay: 0, x: 500, duration: 500 }}">
     <h1>НОВОСТНАЯ ЛЕНТА</h1>
     {#if history.length>0}
     {#each history as h}
