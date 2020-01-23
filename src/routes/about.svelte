@@ -212,7 +212,7 @@ let certss = [
             }
             .col{
                 margin-bottom: 10px;
-                width: 400px
+                width: 800px
             }
             .cust-cont{
                 justify-content: center;
@@ -266,7 +266,7 @@ let certss = [
     @media (max-width: 750px) {
         .col{
             margin-bottom: 10px;
-            width: 400px
+            width: 530px
         }
         .cust-cont{
             justify-content: center;
@@ -405,7 +405,7 @@ let certss = [
 
         .img-container, ._img{
             max-width: 250px; min-width: 200px;
-            max-height: 320px; min-height: 320px;
+            max-height: 260px; min-height: 260px;
         }
 
         .col{
@@ -495,9 +495,9 @@ let certss = [
     <div class="about-container">
         <div class="content-container">
             <div style="width: 100%;">
-                <!--Обучался в "Клубе юных моряков" по направлению "Механика"<br>-->
                 Закончил бакалавриат Московского Политехнического Университета, по направлению корпаративные информационные системы.<br>
-                На текущий момент обучаюсь в магистратуре Московского Политехнического Университета, по направлению "Информатика и вычислительная техника"
+                На текущий момент обучаюсь в магистратуре Московского Политехнического Университета, по направлению "Информатика и вычислительная техника"<br>
+                Работаю инжнер-программистом в области Web и AI.
             </div>
             <div class="ab-col">
             Стэк технологий который использую:
@@ -569,7 +569,10 @@ let certss = [
                     </li>
                 </ul>
             </div>
-
+            <div style="width: 100%;">
+                Портфолио можно увидеть на моем <div class="a pulse"><a href="https://github.com/dmozh" target="_blank"> Github-репозитории</a><br></div>
+                Там собраны проекты которые делались мной и которые доступны для открытого размещения.
+            </div>
         </div>
         <div class="links-col">
             <ul class="links">
@@ -578,6 +581,9 @@ let certss = [
                 </li>
                 <li class="link">
                     <a href="https://github.com/dmozh" target="_blank"><img src="github-icon.png" class="link-icon"></a>
+                </li>
+                <li class="link">
+                    <a href="mailto:dmozh58@gmail.com" target="_blank"><img src="mail.png" class="link-icon"></a>
                 </li>
             </ul>
         </div>

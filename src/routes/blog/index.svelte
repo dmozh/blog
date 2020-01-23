@@ -11,13 +11,13 @@
     let width;
 
 	export let posts;
-	let theme = 'None'
+	let theme = "Автоматизированная система компьютерных исследований 'Компьютерная семиография'"
 </script>
 
 <style>
 
     .container{
-        height: 100vh;
+        /*min-height: 100vh;*/
     }
 
 	.card{
